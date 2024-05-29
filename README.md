@@ -1,5 +1,7 @@
-# index
+# timediff
 Calculate a time difference in several time units.
+
+This repo is based on [Marco Taubmann](https://github.com/marcotaubmann/timediff)'s work.
 
 ## Usage
 
@@ -87,11 +89,11 @@ Default:
 }
 ```
 
-Use `index(start, end, unitString)` (where `unitString` is a string) as a shortcut for
-`index(start, end, {units: unitString})`.
+Use `timediff(start, end, unitString)` (where `unitString` is a string) as a shortcut for
+`timediff(start, end, {units: unitString})`.
 
-Use `index(start, end, callback)` (where `callback` is a function) as a shortcut for
-`index(start, end, {callback: callback})`.
+Use `timediff(start, end, callback)` (where `callback` is a function) as a shortcut for
+`timediff(start, end, {callback: callback})`.
 
 ##### options.units
 

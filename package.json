@@ -1,6 +1,6 @@
 {
   "name": "@marc-maniac/timediff",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "Calculate a time difference in several time units.",
   "license": "MIT",
   "main": "dist/index.js",
