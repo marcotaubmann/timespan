@@ -1,4 +1,4 @@
-export interface ReturnObj {
+export interface Units {
   years: number;
   months: number;
   weeks: number;
@@ -10,7 +10,7 @@ export interface ReturnObj {
 }
 
 export interface OptionsObj<ReturnZeros extends boolean> {
-  units?: string | Partial<Record<keyof ReturnObj, boolean>>;
+  units?: string | Partial<Record<keyof Units, boolean>>;
   returnZeros?: ReturnZeros;
 }
 

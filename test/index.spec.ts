@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import * as dayjs from "dayjs";
 import { timediff } from '../lib';
 import expect from 'expect';
 import { Options } from '../lib';
@@ -27,7 +27,7 @@ describe('timediff', function () {
     }).not.toThrow();
     expect(function () {
       // @ts-ignore
-      timediff(new Date(), moment());
+      timediff(new Date(), dayjs());
     }).not.toThrow();
   });
 

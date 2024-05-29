@@ -1,29 +1,27 @@
-import * as moment from 'moment';
-import Diff = moment.unitOfTime.Diff;
-import DurationConstructor = moment.unitOfTime.DurationConstructor;
-import { Options } from './types';
-import { ReturnObj } from './types';
+import { Options, Units } from './types';
+import * as dayjs from 'dayjs';
+import { ManipulateType, UnitTypeLongPlural } from 'dayjs';
 
 function timediff<ReturnZeros extends boolean = false>(
   start: Date | string | 'now',
   end: Date | string | 'now',
   options?: Options<ReturnZeros>,
-): ReturnZeros extends true ? ReturnObj : Partial<ReturnObj> {
+): ReturnZeros extends true ? Units : Partial<Units> {
   const now = new Date();
 
-  const sd = moment(start === 'now' ? now : start);
+  let sd = dayjs(start === 'now' ? now : start);
   if (!sd.isValid()) {
     throw 'invalid start date ' + sd;
   }
-  const ed = moment(end === 'now' ? now : end);
+  const ed = dayjs(end === 'now' ? now : end);
   if (!ed.isValid()) {
     throw 'invalid end date ' + ed;
   }
 
   const config: {
-    units: Record<keyof ReturnObj, boolean>;
+    units: Record<keyof Units, boolean>;
     returnZeros: boolean;
-    callback: ((result: ReturnObj | Partial<ReturnObj>) => unknown) | undefined;
+    callback: ((result: Units | Partial<Units>) => unknown) | undefined;
   } = {
     units: {
       years: true,
@@ -101,18 +99,18 @@ function timediff<ReturnZeros extends boolean = false>(
     }
   }
 
-  const result: Partial<ReturnObj> = {};
+  const result: Partial<Units> = {};
   for (let unit in config.units) {
-    if (config.units[unit as keyof ReturnObj]) {
-      const value = ed.diff(sd, unit as Diff);
-      sd.add(value, unit as DurationConstructor);
+    if (config.units[unit as keyof Units]) {
+      const value = ed.diff(sd, unit as UnitTypeLongPlural);
+      sd = sd.add(value, unit as ManipulateType);
       if (config.returnZeros || value != 0) {
-        result[unit as keyof ReturnObj] = value;
+        result[unit as keyof Units] = value;
       }
     }
   }
 
-  return result as ReturnZeros extends true ? ReturnObj : Partial<ReturnObj>;
+  return result as ReturnZeros extends true ? Units : Partial<Units>;
 }
 
-export { timediff, ReturnObj, Options }
+export { timediff, Units, Options }
