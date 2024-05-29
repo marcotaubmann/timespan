@@ -9,33 +9,34 @@ This repo is based on [Marco Taubmann](https://github.com/marcotaubmann/timediff
 $ npm install @marc-maniac/timediff
 ```
 
-```js
-var index = require('lib/index');
+```typescript
+import { timediff } from '@marc-maniac/timediff';
 
-index('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
+timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
 // => { years: 3, days: 121, hours: 2, minutes: 15, milliseconds: 10777 }
 ```
 
 ## Examples
 
-```js
-// return the index in all possible units
-index(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
+```typescript
+// return the timediff in all possible units
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
 // => { years: 3, months: 3, weeks: 0, days: 1, hours: 2, minutes: 15, seconds: 10, milliseconds: 0 }
 
-// return the index only in years, weeks, days hours and seconds
-index(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'YWDHS');
+// return the timediff only in years, weeks, days hours and seconds
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'YWDHS');
 // => { years: 3, weeks: 12, days: 6, hours: 2, seconds: 910 }
 
-// return the index only in month, minutes seconds, and milliseconds
-index(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'MmSs');
+// return the timediff only in month, minutes seconds, and milliseconds
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'MmSs');
 // => { months: 39, minutes: 1575, seconds: 10, milliseconds: 777 }
 
 // combine all options
-var christmas = new Date();
+const christmas = new Date();
 christmas.setMonth(11);
 christmas.setDate(24);
-index(new Date(), christmas, {
+
+timediff(new Date(), christmas, {
     units: 'MWD',
     returnZeros: false,
 });
@@ -44,12 +45,12 @@ index(new Date(), christmas, {
 
 ## API
 
-### index(start, end, options)
+### timediff(start, end, options)
 
 Return the time difference between `start` and `end`. Use only the units specified in `options`.
 
 Return:
-```js
+```typescript
 {
   years: 0,
   months: 0,
@@ -72,7 +73,7 @@ Type: `string` | `Date` | `moment`
 Type: `object` | `string` | `function`
 
 Default:
-```js
+```typescript
 {
   units: {
     years:true,
@@ -120,5 +121,5 @@ Type: boolean
 
 If `true` result can contain fields that are `0`, if `false` they are removed.
 
-## Licence
+## License
 MIT copyright [Marco Taubmann]
