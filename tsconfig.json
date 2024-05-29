@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "target": "es6",
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": false,
+
+    // Compatibility
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "strict": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useDefineForClassFields": true,
+    "types": ["mocha"],
+    "outDir": "./dist"
+  },
+  "include": ["lib/**/*", "test/**/*"]
+}

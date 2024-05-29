@@ -1,18 +1,19 @@
 {
-  "name": "timediff",
-  "version": "1.1.1",
+  "name": "@marc-maniac/timediff",
+  "version": "0.3.5",
   "description": "Calculate a time difference in several time units.",
-  "author": "Marco Taubmann",
   "license": "MIT",
-  "main": "timediff.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
-  "bin": {
-    "timediff": "cli.js"
-  },
   "scripts": {
-    "test": "node_modules/jasmine-node/bin/jasmine-node test/"
+    "test": "ts-mocha -p ./tsconfig.json test/**/*.spec.ts",
+    "build": "tsc -p tsconfig.build.json"
   },
   "keywords": [
     "time",
@@ -20,18 +21,26 @@
     "date",
     "diff"
   ],
-  "homepage": "https://github.com/marcotaubmann/timediff",
+  "homepage": "https://github.com/marc-at-brightnight/timediff",
   "bugs": {
-    "url": "https://github.com/marcotaubmann/timediff/issues"
+    "url": "https://github.com/marc-at-brightnight/timediff/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcotaubmann/timediff"
+    "url": "git+https://github.com/marc-at-brightnight/timediff.git"
   },
   "dependencies": {
     "moment": "^2.9.0"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5"
+    "@types/mocha": "^10.0.6",
+    "expect": "^29.7.0",
+    "jasmine-node": "^1.16.0",
+    "prettier": "^3.2.5",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.4.5"
+  },
+  "directories": {
+    "test": "test"
   }
 }
