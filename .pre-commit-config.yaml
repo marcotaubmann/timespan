@@ -1,0 +1,14 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: npx prettier --write --ignore-unknown
+        language: node
+        files: '\.(js|ts|tsx|json|md)$'
+  - repo: https://github.com/BrightNight-Energy/conventional-commit-check
+    rev: 'v1.0.4'
+    hooks:
+      - id: first-commit-check
